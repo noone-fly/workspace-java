@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Agora-RTCNewToken&apos;" deleteContents="true" description="Delete resource &apos;Agora-RTCNewToken&apos;" element1="/Agora-RTCNewToken" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1574094594921"/>
+</session>

@@ -1,0 +1,150 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import org.apache.http.ParseException;
+
+import io.pierre.rtcrestfulapi.RestfulAPITools;
+import io.pierre.tools.PropertyTools;
+
+public class KickoutPanel extends JPanel {
+
+	private JTextField urlField;
+	private JTextField customerIDField;
+	private JTextField customerCerField;
+	private JTextField appidField;
+	private JTextField cnameField;
+	private JTextField uidField;
+	private JTextField ipField;
+	private JTextField timeField;
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JTextArea displayArea;
+	private JButton kickoutButton;
+	
+	String content = ""; // 声网restful的返回
+	String response = ""; //http response
+	
+	Map<String, String> map = null;
+	String customerIdFromProperties = null;
+	String cusCerFromProperties = null;
+	String appIDFromProperties = null;
+
+	public KickoutPanel() {
+		// TODO Auto-generated constructor stub
+		map = PropertyTools.getMessage(System.getProperty("user.home")+"/property.txt");
+		customerIdFromProperties = map.get("customerID");
+		cusCerFromProperties = map.get("customerCertificate");
+		appIDFromProperties = map.get("appidCertificate");
+
+		northPanel = new JPanel();
+		northPanel.setLayout(new GridLayout(8, 3)); // 创建5行两列的表格
+
+		urlField = new JTextField("https://api.agora.io/dev/v1/kicking-rule", 25);
+		urlField.setEditable(false); 
+		customerIDField = new JTextField(customerIdFromProperties, 21);
+		customerCerField = new JTextField(cusCerFromProperties, 21);
+		appidField = new JTextField(appIDFromProperties, 21);
+		cnameField = new JTextField("", 21);
+		uidField = new JTextField("", 21);
+		ipField = new JTextField("", 21);
+		timeField = new JTextField("0", 21);
+
+		northPanel.add(new JLabel("Url: ", SwingConstants.RIGHT));
+		northPanel.add(urlField);
+		northPanel.add(new JLabel("", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Customer ID: ", SwingConstants.RIGHT));
+		northPanel.add(customerIDField);
+		northPanel.add(new JLabel("客户ID必填 ", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Customer Certificate: ", SwingConstants.RIGHT));
+		northPanel.add(customerCerField);
+		northPanel.add(new JLabel("客户证书必填 ", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("App ID: ", SwingConstants.RIGHT));
+		northPanel.add(appidField);
+		northPanel.add(new JLabel("必填 ", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Channel Name: ", SwingConstants.RIGHT));
+		northPanel.add(cnameField);
+		northPanel.add(new JLabel("以频道号的维度封禁", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Uid: ", SwingConstants.RIGHT));
+		northPanel.add(uidField);
+		northPanel.add(new JLabel("需要封禁的客户端uid", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("客户端IP: ", SwingConstants.RIGHT));
+		northPanel.add(ipField);
+		northPanel.add(new JLabel("可选项，以IP维度封禁，不填就置空", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("封人时间: ", SwingConstants.RIGHT));
+		northPanel.add(timeField);
+		northPanel.add(new JLabel("填0表示只踢出频道，时间单位是分钟", SwingConstants.LEFT));
+
+		add(northPanel, BorderLayout.NORTH); // 添加到子面板上部
+
+		// 中部分
+		displayArea = new JTextArea(20, 60);
+		displayArea.setLineWrap(true);
+		displayArea.setWrapStyleWord(true);
+		JScrollPane scrollPane = new JScrollPane(displayArea);
+		add(scrollPane, BorderLayout.CENTER);
+
+		// 下部分
+		southPanel = new JPanel();
+		kickoutButton = new JButton("封印此客户端");
+		southPanel.add(kickoutButton);
+		kickoutButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String cusID = customerIDField.getText().trim();
+				String cusCer = customerCerField.getText().trim();
+				String appid = appidField.getText().trim();
+				String cname = cnameField.getText().trim();
+				String uid = uidField.getText().trim();
+				String ip = ipField.getText().trim();
+				String time = timeField.getText().trim();
+				
+				
+				Map<String, String> map1 = new HashMap<String, String>();
+				map1.put("cusID", cusID);
+				map1.put("cusCer", cusCer);
+				map1.put("appid", appid);
+				map1.put("cname", cname);
+				map1.put("uid", uid);
+				map1.put("ip", ip);
+				map1.put("time", time);
+				
+				try {
+					String[] strings = RestfulAPITools.kickoutSomebody(map1);
+					content = strings[0];
+					response = strings[1];
+				} catch (ParseException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if (response.indexOf("success") != -1) {
+					displayArea.append(content + "\n" + response + "\n");
+				}
+			}
+		});
+		
+		add(southPanel,BorderLayout.SOUTH);
+	}
+}

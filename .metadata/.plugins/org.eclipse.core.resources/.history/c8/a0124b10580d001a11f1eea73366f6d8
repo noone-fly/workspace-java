@@ -1,0 +1,20 @@
+package io.pierre.frame;
+
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class ObtainDurationBilling extends JPanel {
+	
+	
+	public ObtainDurationBilling() {
+		// TODO Auto-generated constructor stub
+		
+		JTextArea textArea = new JTextArea(15,60);
+		
+		
+		JPanel panel = new JPanel();
+		panel.add(textArea);
+	}
+	
+}

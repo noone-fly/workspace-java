@@ -1,0 +1,85 @@
+package com.pierre.frame;
+
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class BuildTree {
+	
+	
+	public BuildTree() {
+		
+	}
+	
+	public static JTree buildTree() {
+		DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("Token");
+        node1.add(new DefaultMutableTreeNode("验证RtcToken"));
+        node1.add(new DefaultMutableTreeNode("反解RtcToken"));
+        node1.add(new DefaultMutableTreeNode("生成RtcToken"));
+        node1.add(new DefaultMutableTreeNode("生成RtmToken"));
+ 
+        DefaultMutableTreeNode node2 = new DefaultMutableTreeNode("Record");
+        node2.add(new DefaultMutableTreeNode("云录制"));
+        node2.add(new DefaultMutableTreeNode("录制"));
+        node2.add(new DefaultMutableTreeNode("阿里云录制"));
+        
+        DefaultMutableTreeNode node3 = new DefaultMutableTreeNode("RESTfulAPI");
+        node3.add(new DefaultMutableTreeNode("开启录制"));
+        node3.add(new DefaultMutableTreeNode("开关APP认证"));
+        node3.add(new DefaultMutableTreeNode("查用户状态"));
+        node3.add(new DefaultMutableTreeNode("查用户列表"));
+        node3.add(new DefaultMutableTreeNode("查频道列表"));
+        node3.add(new DefaultMutableTreeNode("踢人"));
+        
+        DefaultMutableTreeNode node4 = new DefaultMutableTreeNode("sign");
+        node4.add(new DefaultMutableTreeNode("SHA"));
+        node4.add(new DefaultMutableTreeNode("MD5"));
+        node4.add(new DefaultMutableTreeNode("RSA"));
+        node4.add(new DefaultMutableTreeNode("Base64"));
+        
+        DefaultMutableTreeNode node5 = new DefaultMutableTreeNode("file");
+        node5.add(new DefaultMutableTreeNode("search"));
+        
+        DefaultMutableTreeNode node6 = new DefaultMutableTreeNode("billing");
+        node6.add(new DefaultMutableTreeNode("analyze"));
+        
+        DefaultMutableTreeNode node7 = new DefaultMutableTreeNode("Database");
+        node7.add(new DefaultMutableTreeNode("mysql"));
+        
+        DefaultMutableTreeNode node8 = new DefaultMutableTreeNode("Deploy");
+        node8.add(new DefaultMutableTreeNode("server1"));
+        
+        DefaultMutableTreeNode node9 = new DefaultMutableTreeNode("ssh");
+        node9.add(new DefaultMutableTreeNode("scp"));
+ 
+        DefaultMutableTreeNode top = new DefaultMutableTreeNode("首页");
+ 
+        top.add(node1);
+        top.add(node2);
+        top.add(node3);
+        top.add(node4);
+        top.add(node5);
+        top.add(node6);
+        top.add(node7);
+        top.add(node8);
+        top.add(node9);
+        final JTree tree = new JTree(top);
+        
+        
+        tree.addTreeSelectionListener(new TreeSelectionListener() {
+			public void valueChanged(TreeSelectionEvent e) {
+				DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+			    if (node == null) {
+			     return;
+			    }
+			    if (node.toString().equals("colors")) {
+			    
+			    }
+			}
+		});
+        
+        
+		return tree;
+	}
+}

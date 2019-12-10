@@ -1,0 +1,56 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class VarifyTokenPanel extends JPanel {
+	
+	private JTextField tokenField;
+	private JTextField appIDField;  // app ID
+	private JTextField appCerField; // app certificate
+	private JTextField cnameField;  // channel name
+	private JTextField uidField;    // uid
+	
+	private JTextArea displayArea;
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JButton validateToken;
+	
+	public VarifyTokenPanel() {
+		// TODO Auto-generated constructor stub
+		northPanel = new JPanel();
+		northPanel.setLayout(new GridLayout(5,2)); //创建5行两列的表格
+		
+		tokenField = new JTextField("", 100);
+		appIDField = new JTextField("", 25);
+		appCerField = new JTextField("", 25);
+		cnameField = new JTextField("", 25);
+		uidField = new JTextField("", 25);
+		
+		northPanel.add(new JLabel("TokenString: ", SwingConstants.RIGHT));
+		northPanel.add(tokenField);
+		
+		northPanel.add(new JLabel("AppID: ", SwingConstants.RIGHT));
+		northPanel.add(appIDField);
+		
+		northPanel.add(new JLabel("AppCertificate: ", SwingConstants.RIGHT));
+		northPanel.add(appCerField);
+		
+		northPanel.add(new JLabel("Channel Name: ", SwingConstants.RIGHT));
+		northPanel.add(cnameField);
+		
+		northPanel.add(new JLabel("Uid: ", SwingConstants.RIGHT));
+		northPanel.add(uidField);
+		
+		add(northPanel, BorderLayout.NORTH); //添加到子面板上部
+		
+		
+	}
+}

@@ -1,0 +1,27 @@
+package io.pierre.tools;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateTools {
+
+	public static String timestampToDate(long timestamp) {
+		String date = "";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS E");
+		String timestamp_str = String.valueOf(timestamp);
+		if (timestamp_str.length() == 10) {
+			long n = Long.parseLong(timestamp_str.replaceAll("[^\\d]+", "")) * 1000;
+			date = sdf.format(new Date(n));
+		} else {
+			long n = Long.parseLong(timestamp_str.replaceAll("[^\\d]+", ""));
+			date = sdf.format(new Date(n));
+		}
+		return date;
+	}
+	
+	public static String getCurrentDateTime() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS E");
+		String date = sdf.format(new Date());
+		return date;
+	}
+}

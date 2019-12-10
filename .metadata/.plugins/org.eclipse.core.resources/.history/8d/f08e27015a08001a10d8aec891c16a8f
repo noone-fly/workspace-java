@@ -1,0 +1,8 @@
+package io.pierre.frame;
+
+public class DisplayDetailsCardLayout {
+	
+	public DisplayDetailsCardLayout() {
+		
+	}
+}

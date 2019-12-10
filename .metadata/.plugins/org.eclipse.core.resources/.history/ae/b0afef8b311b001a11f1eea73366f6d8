@@ -1,0 +1,26 @@
+package com.pierre.actionlistener;
+
+import javax.swing.JPanel;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class ActionListenerTools {
+	
+	public static void TreeSelectionListenerFun(final JTree tree, JPanel panel) {
+		tree.addTreeSelectionListener(new TreeSelectionListener() {
+			public void valueChanged(TreeSelectionEvent e) {
+				DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+				if (node == null) {
+					return;
+				}
+				if (node.toString().equals("IndexPage")) {
+					panel.
+				}
+			}
+		});
+	}
+	
+	
+}

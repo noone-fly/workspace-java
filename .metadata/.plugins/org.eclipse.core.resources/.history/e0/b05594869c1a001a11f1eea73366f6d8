@@ -1,0 +1,58 @@
+package com.pierre.frame;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class MainFrame extends JFrame {
+	public static final int DEFAULT_WIDTH = 800;
+	public static final int DEFAULT_HEIGHT = 750;
+	private JPanel left = null;
+	private JPanel center = null;
+	private JTextArea displayArea = null;
+	
+	public MainFrame() {
+		setTitle("CS Tools For Mac");
+		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		
+		left = new JPanel();
+		center = new JPanel();
+		
+		DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("Token");
+        node1.add(new DefaultMutableTreeNode("验证Token"));
+        node1.add(new DefaultMutableTreeNode("反解Token"));
+        node1.add(new DefaultMutableTreeNode("生成Token"));
+ 
+        DefaultMutableTreeNode node2 = new DefaultMutableTreeNode("Record");
+        node2.add(new DefaultMutableTreeNode("云录制"));
+        node2.add(new DefaultMutableTreeNode("录制"));
+        node2.add(new DefaultMutableTreeNode("阿里云录制"));
+        
+        DefaultMutableTreeNode node3 = new DefaultMutableTreeNode("RESTfulAPI");
+        node2.add(new DefaultMutableTreeNode("起录制"));
+ 
+        DefaultMutableTreeNode top = new DefaultMutableTreeNode("Tools");
+ 
+        
+        top.add(node1);
+        top.add(node2);
+        final JTree tree = new JTree(top);
+        
+        left.add(new JScrollPane(tree));
+        
+		// 中部分
+		displayArea = new JTextArea(20, 50);
+		displayArea.setLineWrap(true);
+		displayArea.setWrapStyleWord(true);
+		JScrollPane scrollPane = new JScrollPane(displayArea);
+		center.add(scrollPane);
+
+        add(left, BorderLayout.WEST);
+        add(center, BorderLayout.CENTER);
+	}
+}

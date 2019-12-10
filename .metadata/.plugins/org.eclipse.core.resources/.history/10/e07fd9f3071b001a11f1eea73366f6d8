@@ -1,0 +1,12 @@
+package com.pierre.frame;
+
+public class BuildCardLayout {
+	
+	
+	public BuildCardLayout() {
+		
+	}
+	
+	
+	
+}

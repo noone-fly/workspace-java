@@ -1,0 +1,54 @@
+package io.agora.media;
+
+import java.util.Date;
+
+import io.agora.media.AccessToken;
+import io.agora.media.SimpleTokenBuilder;
+
+public class BuilderTokenSample {
+	static String appId = "8ddef1ab63324a988f9eb6373cef56cc";
+    static String appCertificate = "1834204805fb4a01a96244bb0dcb8953";
+    static String channelName = "token20181106";
+    static String uid = "12345678";
+    static int expireTimestamp = (int)(new Date().getTime()/1000) + 180;
+    //static int expireTimestamp = 0;
+    
+
+    public static void main(String[] args) throws Exception {
+        SimpleTokenBuilder token = new SimpleTokenBuilder(appId, appCertificate, channelName, uid);
+        //token.initPrivileges(SimpleTokenBuilder.Role.Role_Admin);
+        
+//        token.initPrivileges(SimpleTokenBuilder.Role.Role_Subscriber);
+//        token.setPrivilege(AccessToken.Privileges.kJoinChannel, expireTimestamp);
+//        token.setPrivilege(AccessToken.Privileges.kRequestPublishAudioStream, expireTimestamp);
+//        token.setPrivilege(AccessToken.Privileges.kRequestPublishVideoStream, expireTimestamp);
+        
+        token.initPrivileges(SimpleTokenBuilder.Role.Role_Publisher);
+        token.setPrivilege(AccessToken.Privileges.kJoinChannel, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishAudioStream, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishVideoStream, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishDataStream, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishVideoCdn, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishAudiocdn, expireTimestamp);
+        
+        token.removePrivilege(AccessToken.Privileges.kPublishVideoStream);
+        
+        
+//      token.initPrivileges(SimpleTokenBuilder.Role.Role_Attendee);
+//      token.setPrivilege(AccessToken.Privileges.kJoinChannel, expireTimestamp);
+//      token.setPrivilege(AccessToken.Privileges.kPublishAudioStream, expireTimestamp);
+//      token.setPrivilege(AccessToken.Privileges.kPublishVideoStream, expireTimestamp);
+//      token.setPrivilege(AccessToken.Privileges.kPublishDataStream, expireTimestamp);
+        
+        
+        //token.initPrivileges(SimpleTokenBuilder.Role.Role_Subscriber);
+        //token.setPrivilege(AccessToken.Privileges.kJoinChannel, expireTimestamp);
+        
+        String result = token.buildToken();
+        System.out.println(result);
+        //System.out.println(new Date().getTime()/1000);
+		//System.out.println(new Date().getTime());
+		//System.out.println(new Date());
+        
+    }
+}

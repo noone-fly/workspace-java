@@ -1,0 +1,31 @@
+package io.pierre.frame;
+
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class QueryUserStatusPanel extends JPanel {
+	private JButton appid;
+	private JButton cname;
+	private JButton uid;
+	
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JButton queryUserStatusToken;
+	
+	Map<String, String> map = null;
+	String appid = null;
+	String cname = null;
+	String uid = null;
+	
+	public QueryUserStatusPanel() {
+		
+	}
+	
+}

@@ -1,0 +1,11 @@
+package com.pierre.frame.cardPanel;
+
+import javax.swing.JPanel;
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class QueryUsagePanel extends JPanel {
+
+}

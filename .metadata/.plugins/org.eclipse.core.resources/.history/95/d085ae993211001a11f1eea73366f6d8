@@ -1,0 +1,10 @@
+package io.pierre.frame;
+
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class SendGetRequestPanel extends JPanel {
+	private JTextField ip;
+	private JTextField cname;
+}

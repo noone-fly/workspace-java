@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;MenuTest.java&apos; to &apos;export/src&apos;&#x0A;- Original project: &apos;109BasicJava-V1Chapter9&apos;&#x0A;- Destination element: &apos;export/src&apos;&#x0A;- Original element: &apos;com.pierre.menu.MenuTest.java&apos;" description="Copy compilation unit" destination="=export/src" element1="/src&lt;com.pierre.menu{MenuTest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1573661711130" units="1" version="1.0"/>
+</session>

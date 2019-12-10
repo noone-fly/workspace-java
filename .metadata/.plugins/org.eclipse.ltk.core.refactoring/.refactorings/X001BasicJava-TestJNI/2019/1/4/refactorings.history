@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;miaoToDate.java&apos; to &apos;TestJNI/src/com.jni.demo&apos;&#x0A;- Original project: &apos;TestJNI&apos;&#x0A;- Destination element: &apos;TestJNI/src/com.jni.demo&apos;&#x0A;- Original element: &apos;com.jni.demo.miaoToDate.java&apos;" description="Copy compilation unit" destination="/src&lt;com.jni.demo" element1="/src&lt;com.jni.demo{miaoToDate.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1548316869591" units="1" version="1.0"/>
+</session>

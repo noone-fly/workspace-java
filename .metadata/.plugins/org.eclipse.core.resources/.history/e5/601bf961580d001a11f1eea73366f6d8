@@ -1,0 +1,27 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class ObtainDurationBilling extends JPanel {
+	
+	
+	public ObtainDurationBilling() {
+		// TODO Auto-generated constructor stub
+		
+		JTextArea textArea = new JTextArea(15,60);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		// add(displayArea); //都行
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		
+		textArea.append("下载详单，请移步 https://archer.agoralab.co/v2/search");
+		add(scrollPane, BorderLayout.CENTER);
+		
+	}
+	
+}

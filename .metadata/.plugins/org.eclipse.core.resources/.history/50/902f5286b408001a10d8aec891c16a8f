@@ -1,0 +1,20 @@
+package io.pierre.tools;
+
+import java.text.SimpleDateFormat;
+
+public class DateTools {
+	
+	public static String timestampToDate(int timestamp) {
+		String date = "";
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS E");
+		String timestamp_str = String.valueOf(timestamp);
+		if (timestamp_str.length() == 10) {
+			
+		}else {
+			
+		}
+		
+		return date;
+	}
+	
+}

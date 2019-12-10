@@ -1,0 +1,13 @@
+package io.pierre.frame;
+
+import javax.swing.JPanel;
+
+public class ObtainDurationBilling extends JPanel {
+	
+	
+	public ObtainDurationBilling() {
+		// TODO Auto-generated constructor stub
+		
+	}
+	
+}

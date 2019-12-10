@@ -1,0 +1,34 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class ObtainDurationBilling extends JPanel {
+	
+	
+	public ObtainDurationBilling() {
+		// TODO Auto-generated constructor stub
+		
+//		JTextArea textArea = new JTextArea(15,60);
+//		textArea.setLineWrap(true);
+//		textArea.setWrapStyleWord(true);
+//		// add(displayArea); //都行
+//		JScrollPane scrollPane = new JScrollPane(textArea);
+		
+		//textArea.append("下载详单，请移步 https://archer.agoralab.co/v2/search");
+		
+		JLabel label = new JLabel("<html><font color=\"red\"><br><b>下载详单，请移步 </b>"
+				+ "<br>"
+				+ "<br></font><a href=\\\\\\\"https://archer.agoralab.co/v2/search\\\\\\\">https://archer.agoralab.co/v2/search</a></html>", SwingConstants.CENTER);
+		
+		add(label, BorderLayout.CENTER);
+		
+	}
+	
+}

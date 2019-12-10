@@ -1,0 +1,65 @@
+package com.pierre.frame;
+
+import java.awt.CardLayout;
+
+import javax.swing.JPanel;
+
+import com.pierre.frame.cardPanel.WelcomPanel;
+
+public class BuildCardLayout {
+	
+	
+	public BuildCardLayout() {
+		
+	}
+	
+	public static JPanel buildCardLayoutPanel() {
+		// 定义卡片布局
+		CardLayout cardLayout = new CardLayout();
+		// 定义一个面板用于显示卡片布局
+		JPanel displayPanel = new JPanel();
+		// 把该面板设置为卡片布局
+		displayPanel.setLayout(cardLayout);
+		
+		// 创建需要放入到卡片布局的子面板，
+		JPanel welcomePanel = new WelcomPanel().returnPanel();
+//		JPanel createRtcTokenPanel = new CreateRtcTokenPanel();
+//		JPanel validateRtcTokenPanel = new VarifyRtcTokenPanel();
+//		JPanel analyzeRtcTokenPanel = new AnalyzeRtcTokenPanel();
+//		JPanel createRtmTokenPanel = new CreateRtmTokenPanel();
+//		JPanel validateRtmTokenPanel = new ValidateRtmTokenPanel(); //新增
+//
+//		JPanel queryUserStatusPanel = new QueryUserStatusPanel();
+//		JPanel queryUserListPanel = new QueryUserListPanel();
+//		JPanel queryChannelListPanel = new QueryChannelListPanel();
+//		JPanel startCloudRecordSinglePanel = new StartCloudRecordSinglePanel();
+//		JPanel startCloudRecordMixPanel = new StartCloudRecordMixPanel();
+//		JPanel startLocalRecordPanel = new StartLocalRecordPanel();
+//		JPanel kickoutPanel = new KickoutPanel();
+//
+//		JPanel obtainDurationBillingPanel = new ObtainDurationBilling();
+//		JPanel queryUsagePanel = new QueryUsagePanel();
+
+		// 把定义好的子面板放入卡片布局中
+		displayPanel.add("welcomeTag", welcomePanel);
+//		displayNext.add("createRtcTokenTag", createRtcTokenPanel);
+//		displayNext.add("validateRtcTokenTag", validateRtcTokenPanel);
+//		displayNext.add("analyzeRtcTokenTag", analyzeRtcTokenPanel);
+//		displayNext.add("createRtmTokenTag", createRtmTokenPanel);
+//		displayNext.add("validateRtmTokenTag", validateRtmTokenPanel);
+//
+//		displayNext.add("queryUserStatusTag", queryUserStatusPanel);
+//		displayNext.add("queryUserListTag",queryUserListPanel);
+//		displayNext.add("queryChannelListTag", queryChannelListPanel);
+//		displayNext.add("startCloudRecordSingleTag", startCloudRecordSinglePanel);
+//		displayNext.add("startCloudRecordMixTag", startCloudRecordMixPanel);
+//		displayNext.add("startLocalRecordTag",startLocalRecordPanel);
+//
+//		displayNext.add("obtainDurationBillingTag", obtainDurationBillingPanel);
+//		displayNext.add("queryUsageTag", queryUsagePanel);
+//		displayNext.add("kickoutTag", kickoutPanel);
+		
+		return displayPanel;
+	}
+	
+}

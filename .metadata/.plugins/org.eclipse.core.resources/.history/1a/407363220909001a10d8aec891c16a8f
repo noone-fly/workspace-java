@@ -1,0 +1,14 @@
+package io.pierre.tools;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+public class PropertyTools {
+	
+	public static Map<String, String> getMessage(File file){
+		Map<String, String> map = new HashMap<String, String>();
+		retur map;
+	}
+	
+}

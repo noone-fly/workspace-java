@@ -1,0 +1,113 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import io.pierre.tools.PropertyTools;
+
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class CreateRtmTokenPanel extends JPanel {
+	
+	private JTextField appIdField; // app ID
+	private JTextField appCerField; // app certificate
+	private JTextField uidField; // uid
+	private JTextField expireTimestampField; //
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JTextArea displayArea; // 显示token结果
+	private JButton createToken;
+
+	Map<String, String> map = null;
+	String appidFromProperties = null;
+	String CerFromProperties = null;
+	String cnameFromProperties = null;
+	String uidFromProperties = null;
+	
+	public CreateRtmTokenPanel() {
+		// TODO Auto-generated constructor stub
+		map = PropertyTools.getMessage(System.getProperty("user.home") + "/property.txt");
+		
+		appidFromProperties = map.get("appidCertificate");
+		CerFromProperties = map.get("appCertificate");
+		
+		uidFromProperties = map.get("uid");
+		
+		northPanel = new JPanel();
+		northPanel.setLayout(new GridLayout(5, 3)); // 创建5行两列的表格
+
+		appIdField = new JTextField(appidFromProperties, 21);
+		appCerField = new JTextField(CerFromProperties, 21);
+		uidField = new JTextField(uidFromProperties, 21);
+		expireTimestampField = new JTextField("0", 21);
+		
+		appIdField.addMouseListener(new MouseListener() {
+			@Override // 鼠标按下，释放时就执行
+			public void mouseReleased(MouseEvent e) {}
+			@Override // 鼠标按下时执行
+			public void mousePressed(MouseEvent e) {appIdField.setText("");}
+			@Override // 鼠标离开组件时执行
+			public void mouseExited(MouseEvent e) {}
+			@Override // 鼠标回到组件时执行，离开组件不会执行
+			public void mouseEntered(MouseEvent e) {}
+			@Override // 鼠标按下时执行，释放时恢复显示文字
+			public void mouseClicked(MouseEvent e) {}
+		});
+		appCerField.addMouseListener(new MouseListener() {
+			@Override // 鼠标按下，释放时就执行
+			public void mouseReleased(MouseEvent e) {}
+			@Override // 鼠标按下时执行
+			public void mousePressed(MouseEvent e) {appCerField.setText("");}
+			@Override // 鼠标离开组件时执行
+			public void mouseExited(MouseEvent e) {}
+			@Override // 鼠标回到组件时执行，离开组件不会执行
+			public void mouseEntered(MouseEvent e) {}
+			@Override // 鼠标按下时执行，释放时恢复显示文字
+			public void mouseClicked(MouseEvent e) {}
+		});
+		
+		uidField.addMouseListener(new MouseListener() {
+			@Override // 鼠标按下，释放时就执行
+			public void mouseReleased(MouseEvent e) {}
+			@Override // 鼠标按下时执行
+			public void mousePressed(MouseEvent e) {uidField.setText("");}
+			@Override // 鼠标离开组件时执行
+			public void mouseExited(MouseEvent e) {}
+			@Override // 鼠标回到组件时执行，离开组件不会执行
+			public void mouseEntered(MouseEvent e) {}
+			@Override // 鼠标按下时执行，释放时恢复显示文字
+			public void mouseClicked(MouseEvent e) {}
+		});
+		
+		northPanel.add(new JLabel("App ID: ", SwingConstants.RIGHT));
+		northPanel.add(appIdField);
+		northPanel.add(new JLabel("你的app ID ", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("App Certificate: ", SwingConstants.RIGHT));
+		northPanel.add(appCerField);
+		northPanel.add(new JLabel("你的app certificate ", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Uid: ", SwingConstants.RIGHT));
+		northPanel.add(uidField);
+		northPanel.add(new JLabel("32位无符号整数。建议范围：1到(2^32-1)", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Expire Timestamp: ", SwingConstants.RIGHT));
+		northPanel.add(expireTimestampField);
+		northPanel.add(new JLabel("过期时间，单位秒", SwingConstants.LEFT));
+
+		add(northPanel, BorderLayout.NORTH); // 添加到子面板上部
+	}
+}

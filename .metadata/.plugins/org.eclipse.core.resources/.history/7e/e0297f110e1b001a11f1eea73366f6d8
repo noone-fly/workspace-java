@@ -1,0 +1,49 @@
+package com.pierre.frame;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTree;
+
+public class MainFrame extends JFrame {
+	public static final int DEFAULT_WIDTH = 800;
+	public static final int DEFAULT_HEIGHT = 750;
+	private JPanel left = null;
+	private JPanel center = null;
+	private JTextArea displayArea = null;
+	
+	public MainFrame() {
+		setTitle("Pierre DIY");  //frame title
+		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);  //frame width and height
+		
+		//左右两个面板
+		left = new JPanel();
+		center = new JPanel();
+		
+		//左边的树结构
+		JTree tree = BuildTree.buildTree();
+        //把tree加入左边JPanel 并设置大小
+        left.add(new JScrollPane(tree) {
+        		public Dimension getPreferredSize() {return new Dimension(140, 720);}
+        	});
+        
+//		// 右边用卡片布局
+//		displayArea = new JTextArea(20, 50);
+//		displayArea.setLineWrap(true);
+//		displayArea.setWrapStyleWord(true);
+        
+        
+		//右边面板
+		center.add(new JScrollPane(BuildCardLayout.buildCardLayoutPanel())
+			{
+	    		public Dimension getPreferredSize() {return new Dimension(320, 720);}
+	    	});
+
+		//把两个panel面板加入到frame中
+        add(left, BorderLayout.WEST);
+        add(center, BorderLayout.CENTER);
+	}
+}

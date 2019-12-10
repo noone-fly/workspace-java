@@ -1,0 +1,10 @@
+package com.pierre.swinglayout;
+
+public class GradLayout {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

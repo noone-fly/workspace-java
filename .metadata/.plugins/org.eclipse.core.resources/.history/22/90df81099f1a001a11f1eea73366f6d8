@@ -1,0 +1,36 @@
+package com.pierre.frame;
+
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class BuildTree {
+	
+	
+	public BuildTree() {
+		
+	}
+	
+	public static JTree buildTree() {
+		DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("Token");
+        node1.add(new DefaultMutableTreeNode("验证Token"));
+        node1.add(new DefaultMutableTreeNode("反解Token"));
+        node1.add(new DefaultMutableTreeNode("生成Token"));
+ 
+        DefaultMutableTreeNode node2 = new DefaultMutableTreeNode("Record");
+        node2.add(new DefaultMutableTreeNode("云录制"));
+        node2.add(new DefaultMutableTreeNode("录制"));
+        node2.add(new DefaultMutableTreeNode("阿里云录制"));
+        
+        DefaultMutableTreeNode node3 = new DefaultMutableTreeNode("RESTfulAPI");
+        node3.add(new DefaultMutableTreeNode("起录制"));
+ 
+        DefaultMutableTreeNode top = new DefaultMutableTreeNode("Tools");
+ 
+        
+        top.add(node1);
+        top.add(node2);
+        top.add(node3);
+        JTree tree = new JTree(top);
+		return tree;
+	}
+}

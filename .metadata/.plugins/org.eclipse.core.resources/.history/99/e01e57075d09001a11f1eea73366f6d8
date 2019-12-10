@@ -1,0 +1,11 @@
+package io.pierre.rtcrestfulapi;
+
+import java.util.Map;
+
+public class RestfulAPITools {
+	
+	public static void kickoutSomebody(Map<String, String> map) {
+		
+	}
+	
+}

@@ -1,0 +1,152 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import io.pierre.token.BuilderTokenSample;
+import io.pierre.tools.ValidateField;
+
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class CreateRtcTokenPanel extends JPanel{
+	private JTextField appIdField;  // app ID
+	private JTextField appCerField; // app certificate
+	private JTextField channelNameField;  // channel name
+	private JTextField uidField;    // uid
+	private JTextField expireTimestampField;  // 
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JTextArea displayArea; //显示token结果
+	private JButton createToken;
+	
+	
+	public CreateRtcTokenPanel() {
+		// TODO Auto-generated constructor stub
+		northPanel = new JPanel();
+		northPanel.setLayout(new GridLayout(5,3)); //创建5行两列的表格
+		
+		appIdField = new JTextField("", 21);
+		appCerField = new JTextField("", 21);
+		channelNameField = new JTextField("147258", 21);
+		uidField = new JTextField("123456", 21);
+		expireTimestampField = new JTextField("0",21);
+		
+		northPanel.add(new JLabel("App ID: ", SwingConstants.RIGHT));
+		northPanel.add(appIdField);
+		northPanel.add(new JLabel("你的app ID ", SwingConstants.LEFT));
+		
+		northPanel.add(new JLabel("App Certificate: ", SwingConstants.RIGHT));
+		northPanel.add(appCerField);
+		northPanel.add(new JLabel("你的app certificate ", SwingConstants.LEFT));
+		
+		northPanel.add(new JLabel("Channel Name: ", SwingConstants.RIGHT));
+		northPanel.add(channelNameField);
+		northPanel.add(new JLabel("你的频道号 ", SwingConstants.LEFT));
+		
+		northPanel.add(new JLabel("Uid: ", SwingConstants.RIGHT));
+		northPanel.add(uidField);
+		northPanel.add(new JLabel("32位无符号整数。建议范围：1到(2^32-1)", SwingConstants.LEFT));
+		
+		northPanel.add(new JLabel("Expire Timestamp: ", SwingConstants.RIGHT));
+		northPanel.add(expireTimestampField);
+		northPanel.add(new JLabel("过期时间，单位秒", SwingConstants.LEFT));
+		
+		add(northPanel, BorderLayout.NORTH); //添加到子面板上部
+		
+		//中部分
+		
+		displayArea = new JTextArea(20,60);
+		JScrollPane scrollPane = new JScrollPane(displayArea);
+		
+		add(scrollPane, BorderLayout.CENTER);
+		
+		//下部分
+		southPanel = new JPanel();
+		createToken = new JButton("创建Token");
+		southPanel.add(createToken);
+		createToken.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String appId = appIdField.getText();
+				String appCertificate = appCerField.getText();
+				String channelName = channelNameField.getText();
+				String uid = uidField.getText();
+				String expireTime = expireTimestampField.getText();
+				
+				//validate appid 
+				String validateAppid = ValidateField.validateAppid(appId.trim());
+				String validateAppCertificate = ValidateField.validateAppid(appCertificate.trim());
+				String validateUid = ValidateField.validateUid(uid.trim());
+				String validateExpireTime = ValidateField.validateExpireTime(expireTime);
+				
+				if (null == appId || appId.equals("")) {
+					displayArea.setText("");
+					displayArea.append("Appid 不能为空");
+				}else if ( "invalid" == validateAppid) {
+					displayArea.setText("");
+					displayArea.append("Appid 必须是32的字符串，且只包含小写字母和数字字符");
+				}else if (null == appCertificate || appCertificate.equals("")) {
+					displayArea.setText("");
+					displayArea.append("App Certificate 不能为空");
+				}else if ("invalid" == validateAppCertificate) {
+					displayArea.setText("");
+					displayArea.append("App Certificate 也必须是32的字符串，也只包含小写字母和数字字符");
+				}else if (null == channelName || channelName.equals("")) {
+					displayArea.setText("");
+					displayArea.append("Channel Name 不能为空");
+				}else if (null == uid || uid.equals("")) {
+					displayArea.setText("");
+					displayArea.append("uid 不能为空");
+				}else if ("correct" == validateUid && Long.parseLong(uid) > 4294967295L) {
+					displayArea.setText("");
+					displayArea.append("Uid 不能大于4294967295，即范围是1到(2^32-1)");
+				}else if ("invalid" == validateUid) {
+					displayArea.setText("");
+					displayArea.append("Uid 必须是数字，而且不能以0开头");
+				}else if ("invalid" == validateExpireTime) {
+					displayArea.setText("");
+					displayArea.append("时间单位是秒，不能以0开头");
+				}else {
+					if (null == expireTime || expireTime.equals("")) {
+						expireTime = "0";
+					}
+					int expireTimestamp =(int)(new Date().getTime()/1000) + Integer.parseInt(expireTime);
+					String token = "";
+					try {
+						token = BuilderTokenSample.generateToken(appId, appCertificate, channelName, uid, expireTimestamp);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					//生成token的当前时间
+					
+					displayArea.append("appId: " + appId + "\n"
+					+ "App Certificate: " + appCertificate + "\n"
+					+ "Channel Name: " + channelName + "\n"
+					+ "Uid: " + uid + "\n"
+					+ "Expire Timestamp: " + expireTimestamp + "\n"
+					+ "你的token是：" + token);
+				}
+			}
+		});
+		add(southPanel, BorderLayout.SOUTH);
+	}
+}

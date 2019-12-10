@@ -1,0 +1,11 @@
+package io.pierre.tools;
+
+import java.util.Map;
+
+public class PropertyTools {
+	
+	public static Map<String, String> getMessage(){
+		
+	}
+	
+}

@@ -1,0 +1,54 @@
+package com.pierre.frame;
+
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class BuildTree {
+	
+	
+	public BuildTree() {
+		
+	}
+	
+	public static JTree buildTree() {
+		DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("Token");
+        node1.add(new DefaultMutableTreeNode("验证RtcToken"));
+        node1.add(new DefaultMutableTreeNode("反解RtcToken"));
+        node1.add(new DefaultMutableTreeNode("生成RtcToken"));
+        node1.add(new DefaultMutableTreeNode("生成RtmToken"));
+ 
+        DefaultMutableTreeNode node2 = new DefaultMutableTreeNode("Record");
+        node2.add(new DefaultMutableTreeNode("云录制"));
+        node2.add(new DefaultMutableTreeNode("录制"));
+        node2.add(new DefaultMutableTreeNode("阿里云录制"));
+        
+        DefaultMutableTreeNode node3 = new DefaultMutableTreeNode("RESTfulAPI");
+        node3.add(new DefaultMutableTreeNode("开启录制"));
+        node3.add(new DefaultMutableTreeNode("开关APP认证"));
+        node3.add(new DefaultMutableTreeNode("查用户状态"));
+        node3.add(new DefaultMutableTreeNode("查用户列表"));
+        node3.add(new DefaultMutableTreeNode("查频道列表"));
+        node3.add(new DefaultMutableTreeNode("踢人"));
+        
+        DefaultMutableTreeNode node4 = new DefaultMutableTreeNode("sign");
+        node4.add(new DefaultMutableTreeNode("SHA"));
+        node4.add(new DefaultMutableTreeNode("MD5"));
+        node4.add(new DefaultMutableTreeNode("RSA"));
+        node4.add(new DefaultMutableTreeNode("Base64"));
+        
+        DefaultMutableTreeNode node5 = new DefaultMutableTreeNode("file");
+        
+        DefaultMutableTreeNode node6 = new DefaultMutableTreeNode("billing");
+        
+        DefaultMutableTreeNode node6 = new DefaultMutableTreeNode("DB");
+ 
+        DefaultMutableTreeNode top = new DefaultMutableTreeNode("首页");
+ 
+        top.add(node1);
+        top.add(node2);
+        top.add(node3);
+        top.add(node4);
+        JTree tree = new JTree(top);
+		return tree;
+	}
+}

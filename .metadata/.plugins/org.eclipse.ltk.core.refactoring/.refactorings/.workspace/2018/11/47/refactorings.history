@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Agora-Signaling-Tutorial-Java&apos;" deleteContents="false" description="Delete resource &apos;Agora-Signaling-Tutorial-Java&apos;" element1="/Agora-Signaling-Tutorial-Java" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1542524322407"/>
+</session>

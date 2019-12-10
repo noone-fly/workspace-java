@@ -1,0 +1,7 @@
+package io.pierre.frame;
+
+import javax.swing.JPanel;
+
+public class QueryUserListPanel extends JPanel {
+
+}

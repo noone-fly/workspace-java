@@ -1,0 +1,16 @@
+package io.pierre.frame;
+
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class KickoutPanel extends JPanel {
+	
+	private JTextField urlField;
+	private JTextField customerIDField;
+	private JTextField customerCerField;
+	private JTextField appidField;
+	private JTextField cnameField;
+	private JTextField uidField;
+	private JTextField ipField;
+	private JTextField timeField;
+}

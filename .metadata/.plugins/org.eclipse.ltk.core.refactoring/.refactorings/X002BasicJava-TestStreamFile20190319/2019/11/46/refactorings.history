@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;fly.io.com.agora&apos; to &apos;Agora-Tools/src&apos;&#x0A;- Original project: &apos;X002BasicJava-TestStreamFile20190319&apos;&#x0A;- Destination element: &apos;Agora-Tools/src&apos;&#x0A;- Original element: &apos;X002BasicJava-TestStreamFile20190319/src/fly.io.com.agora&apos;&#x0A;- Update references to refactored element" description="Move package" destination="=Agora-Tools/src" element1="/src&lt;fly.io.com.agora" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1573632961225" version="1.0"/>
+</session>

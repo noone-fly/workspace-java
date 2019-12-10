@@ -1,0 +1,31 @@
+package com.pierre.frame;
+
+import javax.swing.JFrame;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class MainFrame extends JFrame {
+	public static final int DEFAULT_WIDTH = 800;
+	public static final int DEFAULT_HEIGHT = 750;
+	
+	public MainFrame() {
+		setTitle("CS Tools For Mac");
+		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("软件部");
+        node1.add(new DefaultMutableTreeNode(new User("小花")));
+        node1.add(new DefaultMutableTreeNode(new User("小虎")));
+        node1.add(new DefaultMutableTreeNode(new User("小龙")));
+ 
+        DefaultMutableTreeNode node2 = new DefaultMutableTreeNode("销售部");
+        node2.add(new DefaultMutableTreeNode(new User("小叶")));
+        node2.add(new DefaultMutableTreeNode(new User("小雯")));
+        node2.add(new DefaultMutableTreeNode(new User("小夏")));
+ 
+        DefaultMutableTreeNode top = new DefaultMutableTreeNode("Tools");
+ 
+        top.add(new DefaultMutableTreeNode(new User("总经理")));
+        top.add(node1);
+        top.add(node2);
+        final JTree tree = new JTree(top);
+	}
+}

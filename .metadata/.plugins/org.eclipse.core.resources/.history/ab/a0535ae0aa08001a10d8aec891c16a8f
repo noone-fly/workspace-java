@@ -1,0 +1,28 @@
+package io.pierre.tools;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class ValidateField {
+	
+	public static String validateAppid(String appId) {
+		String string = "";
+		String patternString = "[a-z0-9]{32}";
+		Pattern pattern = Pattern.compile(patternString);
+        Matcher matcher = pattern.matcher(appId);
+        if (matcher.matches()) {
+			string = "correct";
+		}else {
+			string = "invalid";
+		}
+        
+        return string;
+	}
+	
+	
+}

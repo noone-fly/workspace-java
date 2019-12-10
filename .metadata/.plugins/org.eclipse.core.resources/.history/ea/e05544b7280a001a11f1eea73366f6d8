@@ -1,0 +1,22 @@
+package io.pierre.frame;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class AnalyzeRtcTokenPanel extends JPanel {
+	private JTextArea tokenArea;
+	private JTextArea displayArea;
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JButton validateToken;
+	public AnalyzeRtcTokenPanel() {
+		// TODO Auto-generated constructor stub
+		
+	}
+}

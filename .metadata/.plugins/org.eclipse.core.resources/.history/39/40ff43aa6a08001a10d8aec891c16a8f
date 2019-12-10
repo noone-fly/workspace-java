@@ -1,0 +1,18 @@
+package io.pierre.tools;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ValidateField {
+	
+	public String validateAppid(String appId) {
+		String string = "";
+		Pattern pattern = Pattern.compile(appId, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(pattern);
+        
+        
+        return string;
+	}
+	
+	
+}

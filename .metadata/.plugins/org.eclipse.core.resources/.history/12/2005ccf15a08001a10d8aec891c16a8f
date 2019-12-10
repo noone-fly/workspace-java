@@ -1,0 +1,17 @@
+package io.pierre.frame;
+
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class VarifyTokenPanel extends JPanel {
+	
+	private JTextField tokenField;
+	private JTextField appIDField;  // app ID
+	private JTextField appCerField; // app certificate
+	private JTextField cnameField;  // channel name
+	private JTextField uidField;    // uid
+	
+	public VarifyTokenPanel() {
+		// TODO Auto-generated constructor stub
+	}
+}

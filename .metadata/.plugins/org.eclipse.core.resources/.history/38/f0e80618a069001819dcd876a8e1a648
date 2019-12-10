@@ -1,0 +1,45 @@
+package io.agora.media;
+
+import java.util.Date;
+
+import io.agora.media.AccessToken;
+import io.agora.media.SimpleTokenBuilder;
+
+public class BuilderTokenSample {
+	static String appId = "8ddef1ab63324a988f9eb6373cef56cc";
+    static String appCertificate = "1834204805fb4a01a96244bb0dcb8953";
+    //static String appId = "91348a7f200c4fa6abf3bff6dd61d3d3";
+    //static String appCertificate = "d2210048d7a84c3bb17b524415c595f8";
+    static String channelName = "123123a";
+    static String uid = "555444";
+    static int expireTimestamp = (int)(new Date().getTime()/1000) + 1800;
+    //static int expireTimestamp = 0;
+    
+
+    public static void main(String[] args) throws Exception {
+        SimpleTokenBuilder token = new SimpleTokenBuilder(appId, appCertificate, channelName, uid);
+//        token.initPrivileges(SimpleTokenBuilder.Role.Role_Attendee);
+//        token.setPrivilege(AccessToken.Privileges.kJoinChannel, expireTimestamp);
+//        token.setPrivilege(AccessToken.Privileges.kPublishAudioStream, expireTimestamp);
+//        token.setPrivilege(AccessToken.Privileges.kPublishVideoStream, expireTimestamp);
+//        token.setPrivilege(AccessToken.Privileges.kPublishDataStream, expireTimestamp);
+        
+        token.initPrivileges(SimpleTokenBuilder.Role.Role_Publisher);
+        token.setPrivilege(AccessToken.Privileges.kJoinChannel, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishAudioStream, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishVideoStream, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishDataStream, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishVideoCdn, expireTimestamp);
+        token.setPrivilege(AccessToken.Privileges.kPublishAudiocdn, expireTimestamp);
+        
+        //token.initPrivileges(SimpleTokenBuilder.Role.Role_Subscriber);
+        //token.setPrivilege(AccessToken.Privileges.kJoinChannel, expireTimestamp);
+        
+        String result = token.buildToken();
+        System.out.println(result);
+        //System.out.println(new Date().getTime()/1000);
+		//System.out.println(new Date().getTime());
+		System.out.println(new Date());
+        
+    }
+}

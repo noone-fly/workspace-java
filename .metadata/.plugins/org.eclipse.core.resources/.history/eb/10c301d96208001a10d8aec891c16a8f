@@ -1,0 +1,22 @@
+package io.pierre.frame;
+
+import java.awt.MenuBar;
+
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+
+public class MenuBarTools extends MenuBar {
+	
+	public MenuBarTools() {
+		// TODO Auto-generated constructor stub
+		JMenuBar menubar = new JMenuBar();
+		JMenu fileMenu = new JMenu("File");
+		JMenu settingMenu = new JMenu("Setting");
+		JMenu editMenu = new JMenu("Edit");
+		JMenu helpMenu = new JMenu("help");
+		menubar.add(fileMenu);
+		menubar.add(editMenu);
+		menubar.add(settingMenu);
+		menubar.add(helpMenu);
+	}
+}

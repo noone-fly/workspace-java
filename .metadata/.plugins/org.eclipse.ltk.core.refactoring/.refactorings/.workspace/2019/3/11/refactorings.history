@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;GenerateKey&apos; to &apos;GenerateSignalingKey&apos;&#x0A;- Original element: &apos;GenerateKey&apos;&#x0A;- Renamed element: &apos;GenerateKey&apos;&#x0A;- Update references to refactored element" description="Rename Java project &apos;GenerateKey&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=GenerateKey" name="GenerateSignalingKey" references="true" stamp="1552641777216" version="1.0"/>
+</session>

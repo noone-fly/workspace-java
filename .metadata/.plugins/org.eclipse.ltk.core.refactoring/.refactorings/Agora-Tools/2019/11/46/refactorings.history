@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;Agora-Tools&apos;&#x0A;- Original project: &apos;Agora-Tools&apos;&#x0A;- Original element: &apos;Agora-Tools/src/pierre.java.security.base64&apos;" description="Delete element" element1="/src&lt;pierre.java.security.base64" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1573632923941" subPackages="false" version="1.0"/>
+</session>

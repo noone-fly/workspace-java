@@ -1,0 +1,36 @@
+package io.pierre.frame;
+
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import io.pierre.tools.PropertyTools;
+
+public class ValidateRtmTokenPanel extends JPanel {
+	private JTextArea tokenArea;
+	private JTextField appIDField;  // app ID
+	private JTextField appCerField; // app certificate
+	private JTextField uidField;    // uid
+	
+	private JTextArea displayArea;
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JButton validateToken;
+	
+	Map<String, String> map = null;
+	String appidFromProperties = null;
+	String CerFromProperties = null;
+	String uidFromProperties = null;
+	
+	public ValidateRtmTokenPanel() {
+		// TODO Auto-generated constructor stub
+		map = PropertyTools.getMessage(System.getProperty("user.home") + "/property.txt");
+		
+		appidFromProperties = map.get("appidCertificate");
+		CerFromProperties = map.get("appCertificate");
+		uidFromProperties = map.get("uid");
+	}
+}

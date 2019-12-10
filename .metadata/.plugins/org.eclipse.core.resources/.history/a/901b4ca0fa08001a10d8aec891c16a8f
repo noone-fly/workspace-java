@@ -1,0 +1,164 @@
+package io.pierre.frame;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.border.Border;
+
+/**
+ * @author chenpiyang 一切需要重复编写的代码，都可以进一步优化
+ */
+public class AgoraTool {
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				JFrame frame = new MainFrame();
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setVisible(true);
+				frame.setResizable(false);
+			}
+		});
+	}
+}
+
+class MainFrame extends JFrame {
+	private static final long serialVersionUID = 1L;
+	public static final int DEFAULT_WIDTH = 800;
+	public static final int DEFAULT_HEIGHT = 700;
+
+	// 定义卡片布局
+	private CardLayout cardLayout = new CardLayout();
+	// 分隔符
+	JPanel lastPanel = new JPanel();
+	// 卡片显示区域
+	JPanel displayNext = new JPanel();
+	//border
+	JPanel border = new JPanel();
+
+	// new button
+	JButton createRtcTokenButton = new JButton("创建RtcToken");
+	JButton varifyRtcTokenButton = new JButton("验证RtcToken");;
+	JButton analyzeRtcTokenButton = new JButton("解析RtcToken");
+	JButton createRtmTokenButton = new JButton("创建RtmToken");
+	JButton kickoutButton = new JButton("踢人");
+	JButton queryUsageButton = new JButton("查询用量");
+	JButton queryUserStatusButton = new JButton("查询用户状态");
+	JButton queryUserListButton = new JButton("查询用户列表");
+	JButton queryChannelListButton = new JButton("查询频道列表");
+	JButton startCloudRecordButton = new JButton("云录制");
+	JButton startLocalRecordButton = new JButton("本地录制");
+	JButton obtainDurationBillingButton = new JButton("获取详单");
+
+	public MainFrame() {
+		setTitle("Agora Tools");
+		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		// 菜单栏
+		JMenuBar menuBar = new JMenuBar();
+		JMenuBarTools.addMenu(menuBar, "File");
+		JMenuBarTools.addMenu(menuBar, "Setting");
+		JMenuBarTools.addMenu(menuBar, "Edit");
+		JMenuBarTools.addMenu(menuBar, "Help");
+		setJMenuBar(menuBar);
+
+		// 把卡片显示区域定义为卡片布局
+		displayNext.setLayout(cardLayout);
+		// 给卡片面板设置上边框
+		displayNext.setBorder(BorderFactory.createMatteBorder(20,0,0,0, Color.WHITE));
+
+		// 创建特定面板
+		JPanel createRtcTokenPanel = new CreateRtcTokenPanel();
+		JPanel validateRtcTokenPanel = new VarifyRtcTokenPanel();
+		JPanel analyzeRtcTokenPanel = new AnalyzeRtcTokenPanel();
+		JPanel createRtmTokenPanel = new CreateRtmTokenPanel();
+		JPanel kickoutPanel = new KickoutPanel();
+	    	JPanel queryUsagePanel = new QueryUsagePanel();
+	    	JPanel queryUserStatusPanel = new QueryUserStatusPanel();
+	    	JPanel queryUserListPanel = new QueryUserListPanel();
+	    	JPanel queryChannelListPanel = new QueryChannelListPanel();
+	    	JPanel startCloudRecordPanel = new StartCloudRecordPanel();
+	    	JPanel startLocalRecordPanel = new StartLocalRecordPanel();
+	    	JPanel obtainDurationBillingPanel = new ObtainDurationBilling();
+
+		// 把定义好的面板放入卡片布局中
+		displayNext.add("createRtcTokenTag", createRtcTokenPanel);
+		displayNext.add("validateRtcTokenTag", validateRtcTokenPanel);
+		displayNext.add("analyzeRtcTokenTag", analyzeRtcTokenPanel);
+		displayNext.add("createRtmTokenTag", createRtmTokenPanel);
+		displayNext.add("kickoutTag", kickoutPanel);
+		displayNext.add("queryUsageTag", queryUsagePanel);
+		displayNext.add("queryUserStatusTag", queryUserStatusPanel);
+		displayNext.add("queryUserListTag",queryUserListPanel);
+		displayNext.add("queryChannelListTag", queryChannelListPanel);
+		displayNext.add("startCloudRecordTag", startCloudRecordPanel);
+		displayNext.add("startLocalRecordTag",startLocalRecordPanel);
+		displayNext.add("obtainDurationBillingTag", obtainDurationBillingPanel);
+
+		// 添加按钮事件并加入到框架中，并在监听方法中显示子面板
+		addButton(createRtcTokenButton, "createRtcTokenTag");
+		addButton(varifyRtcTokenButton, "validateRtcTokenTag");
+		addButton(analyzeRtcTokenButton, "analyzeRtcTokenTag");
+		addButton(createRtmTokenButton, "createRtmTokenTag");
+		addButton(kickoutButton, "kickoutTag");
+		addButton(queryUsageButton, "queryUsageTag");
+		addButton(queryUserStatusButton, "queryUserStatusTag");
+		addButton(queryUserListButton, "queryUserListTag");
+		addButton(queryChannelListButton, "queryChannelListTag");
+		addButton(startCloudRecordButton, "startCloudRecordTag");
+		addButton(startLocalRecordButton, "startLocalRecordTag");
+		addButton(obtainDurationBillingButton, "obtainDurationBillingTag");
+		
+
+		// 主界面布局，默认显示createRtcToken
+		GridBagLayout layout = new GridBagLayout();
+		this.setLayout(layout);
+
+		add(lastPanel);
+		add(displayNext);
+		displayNext.setBackground(Color.WHITE);
+
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.BOTH;
+
+		// 按钮布局
+		buttonLayout(constraints, layout, 1, 0, 0, createRtcTokenButton);
+		buttonLayout(constraints, layout, 1, 0, 0, varifyRtcTokenButton);
+		buttonLayout(constraints, layout, 1, 0, 0, analyzeRtcTokenButton);
+		buttonLayout(constraints, layout, 1, 0, 0, createRtmTokenButton);
+		buttonLayout(constraints, layout, 1, 0, 0, kickoutButton);
+		buttonLayout(constraints, layout, 1, 0, 0, queryUsageButton);
+		buttonLayout(constraints, layout, 0, 0, 0, queryUserStatusButton);
+		// 分隔符
+		buttonLayout(constraints, layout, 0, 0, 0, lastPanel);
+		buttonLayout(constraints, layout, 1, 0, 0, queryUserListButton);
+		buttonLayout(constraints, layout, 1, 0, 0, queryChannelListButton);
+		buttonLayout(constraints, layout, 1, 0, 0, startCloudRecordButton);
+		buttonLayout(constraints, layout, 1, 0, 0, startLocalRecordButton);
+		buttonLayout(constraints, layout, 1, 0, 0, obtainDurationBillingButton);
+		
+		// 卡片显示区域布局
+		buttonLayout(constraints, layout, 8, 1, 1, displayNext);
+
+	}
+
+	//匿名类： 添加监听事件并加入到框架中，简化代码编写量
+	public void addButton(JButton button, String tag) {
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(displayNext, tag);
+			}
+		});
+		add(button);
+	}
+
+	//主框架界面的布局
+	public void buttonLayout(GridBagConstraints constraints, GridBagLayout layout, int gridwidth, int weightx,
+			int weighty, JComponent component) {
+		constraints.gridwidth = gridwidth;
+		constraints.weightx = weightx;
+		constraints.weighty = weighty;
+		layout.setConstraints(component, constraints);
+	}
+
+}

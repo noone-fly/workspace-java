@@ -1,0 +1,33 @@
+package io.pierre.frame;
+
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class VarifyTokenPanel extends JPanel {
+	
+	private JTextField tokenField;
+	private JTextField appIDField;  // app ID
+	private JTextField appCerField; // app certificate
+	private JTextField cnameField;  // channel name
+	private JTextField uidField;    // uid
+	
+	private JTextArea displayArea;
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JButton validateToken;
+	
+	public VarifyTokenPanel() {
+		// TODO Auto-generated constructor stub
+		northPanel = new JPanel();
+		northPanel.setLayout(new GridLayout(5,2)); //创建5行两列的表格
+		
+		appIDField = new JTextField("", 25);
+		appCerField = new JTextField("", 25);
+		cnameField = new JTextField("", 25);
+		uidField = new JTextField("32位无符号整数。建议范围：1到(2^32-1)", 25);
+	}
+}

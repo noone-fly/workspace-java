@@ -1,0 +1,32 @@
+package com.pierre;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+
+public class PanelTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		EventQueue.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
+
+}
+
+class PanelFrame extends JFrame{
+
+	public static final int DEFAULT_WIDTH = 700;
+	public static final int DEFAULT_HEIGHT = 500;
+	
+	public PanelFrame() {
+		// TODO Auto-generated constructor stub
+		
+	}
+}

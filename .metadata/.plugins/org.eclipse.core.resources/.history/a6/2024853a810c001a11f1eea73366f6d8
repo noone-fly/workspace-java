@@ -1,0 +1,160 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import io.pierre.tools.PropertyTools;
+
+public class WelcomPanel extends JPanel {
+	private JTextField appidNoCertificateField;
+	private JTextField appidCertificateField;
+	private JTextField appCertificateField;
+	private JTextField customerIDField;
+	private JTextField customerCertificateField;
+	private JTextField vendorIDField;
+	private JTextField cnameField;
+	private JTextField uidField;
+
+	private JPanel northPanel;
+	private JPanel centerPanel;
+	private JButton save;
+	private JTextArea area;
+
+	Map<String, String> map = null;
+	String appid1FromProperties = null;
+	String appid2FromProperties = null;
+	String CerFromProperties = null;
+	String customeridFromProperties = null;
+	String cuscerFromProperties = null;
+	String vidFromPreperties = null;
+	String cnameFromProperties = null;
+	String uidFromProperties = null;
+
+	public WelcomPanel() {
+		map = PropertyTools.getMessage(System.getProperty("user.home") + "/property.txt");
+		appid1FromProperties = map.get("appidNoCertificate");
+		appid2FromProperties = map.get("appidCertificate");
+		CerFromProperties = map.get("appCertificate");
+		customeridFromProperties = map.get("customerID");
+		cuscerFromProperties = map.get("customerCertificate");
+		vidFromPreperties = map.get("vendorID");
+		cnameFromProperties = map.get("cname");
+		uidFromProperties = map.get("uid");
+
+		northPanel = new JPanel();
+		centerPanel = new JPanel();
+
+		JLabel label = new JLabel("<html><font color=\"red\"><b>声明：</b>您的信息只本地保存，声网不会私自存储用户信息"
+				+ "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+				+ "填写如下信息，后续使用中，免去重复填写</font></html>", SwingConstants.CENTER);
+		northPanel.add(label);
+		add(northPanel);
+
+		centerPanel.setLayout(new GridLayout(8, 3));
+
+		appidNoCertificateField = new JTextField(appid1FromProperties, 21);
+		appidCertificateField = new JTextField(appid2FromProperties, 21);
+		appCertificateField = new JTextField(CerFromProperties, 21);
+		customerIDField = new JTextField(customeridFromProperties, 21);
+		customerCertificateField = new JTextField(cuscerFromProperties, 21);
+		vendorIDField = new JTextField(vidFromPreperties, 21);
+		cnameField = new JTextField(cnameFromProperties, 21);
+		uidField = new JTextField(uidFromProperties, 21);
+
+		centerPanel.add(new JLabel("App ID1: ", SwingConstants.RIGHT));
+		centerPanel.add(appidNoCertificateField);
+		centerPanel.add(new JLabel("非必填，您常用的未开app认证的appID", SwingConstants.LEFT));
+
+		centerPanel.add(new JLabel("App ID2: ", SwingConstants.RIGHT));
+		centerPanel.add(appidCertificateField);
+		centerPanel.add(new JLabel("非必填，您常用的开了app认证的appID", SwingConstants.LEFT));
+
+		centerPanel.add(new JLabel("App Certificate: ", SwingConstants.RIGHT));
+		centerPanel.add(appCertificateField);
+		centerPanel.add(new JLabel("非必填，您常用的appId认证字符串", SwingConstants.LEFT));
+
+		centerPanel.add(new JLabel("customerID: ", SwingConstants.RIGHT));
+		centerPanel.add(customerIDField);
+		centerPanel.add(new JLabel("非必填，", SwingConstants.LEFT));
+
+		centerPanel.add(new JLabel("Customer Certificate: ", SwingConstants.RIGHT));
+		centerPanel.add(customerCertificateField);
+		centerPanel.add(new JLabel("非必填，", SwingConstants.LEFT));
+
+		centerPanel.add(new JLabel("Vid: ", SwingConstants.RIGHT));
+		centerPanel.add(vendorIDField);
+		centerPanel.add(new JLabel("非必填，", SwingConstants.LEFT));
+
+		centerPanel.add(new JLabel("ChannelName: ", SwingConstants.RIGHT));
+		centerPanel.add(cnameField);
+		centerPanel.add(new JLabel("非必填，用于测试的频道号", SwingConstants.LEFT));
+
+		centerPanel.add(new JLabel("uid: ", SwingConstants.RIGHT));
+		centerPanel.add(uidField);
+		centerPanel.add(new JLabel("非必填，用于测试的uid", SwingConstants.LEFT));
+
+		add(centerPanel, BorderLayout.CENTER);
+
+		save = new JButton("保存在本地");
+		save.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String appidNoCertificate = appidNoCertificateField.getText().trim();
+				String appidCertificate = appidCertificateField.getText().trim();
+				String appCertificate = appCertificateField.getText().trim();
+				String customerID = customerIDField.getText().trim();
+				String customerCertificate = customerCertificateField.getText().trim();
+				String vendorID = vendorIDField.getText().trim();
+				String cname = cnameField.getText().trim();
+				String uid = uidField.getText().trim();
+
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("appidNoCertificate", appidNoCertificate);
+				map.put("appidCertificate", appidCertificate);
+				map.put("appCertificate", appCertificate);
+				map.put("customerID", customerID);
+				map.put("customerCertificate", customerCertificate);
+				map.put("vendorID", vendorID);
+				map.put("cname", cname);
+				map.put("uid", uid);
+				
+				//保存数据到属性文件，Mac home目录下的 property.txt
+				PropertyTools.saveMessage(map);
+
+				if (null == appidNoCertificate || appidNoCertificate.equals("")) {
+					area.setText("");
+					area.append("请填写信息再提交");
+				} else {
+
+					if (null != appidNoCertificate || !appidNoCertificate.equals("") || null != appidCertificate
+							|| !appidCertificate.equals("") || null != appCertificate || !appCertificate.equals("")
+							|| null != customerID || !customerID.equals("") || null != customerCertificate
+							|| !customerCertificate.equals("") || null != vendorID || !vendorID.equals("")
+							|| null != cname || !cname.equals("") || null != uid || !uid.equals("")) {
+						JOptionPane.showMessageDialog(null, "保存成功", "提示", JOptionPane.DEFAULT_OPTION);
+					} else {
+						JOptionPane.showMessageDialog(null, "请填写正确信息", "提示", JOptionPane.DEFAULT_OPTION);
+					}
+				}
+			}
+		});
+		area = new JTextArea(10, 60);
+		area.setLineWrap(true);
+		area.setWrapStyleWord(true);
+		add(area, BorderLayout.SOUTH);
+		area.append("CustomerID, Customer Certificate 从这里获取 https://console.agora.io/restfulApi");
+		add(save);
+	}
+}

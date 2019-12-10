@@ -1,0 +1,15 @@
+package fly.io.com.agora;
+
+import java.util.zip.CRC32;
+
+public class TestCRC {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		CRC32 crc32 = new CRC32();
+		crc32.update("147258".getBytes());
+		System.out.println((int)crc32.getValue());
+		System.out.println(crc32.getValue());
+	}
+
+}

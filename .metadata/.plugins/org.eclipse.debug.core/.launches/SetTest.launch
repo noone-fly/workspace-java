@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/113BasicJava-V1Chapter13CollectionTest20190902/src/com/pierre/set/SetTest.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.debug.ui.ATTR_CAPTURE_STDIN_FILE" value="/Users/chenpiyang/Documents/workspace-java/CollectionTest/src/com/pierre/set/alice30.txt"/>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.pierre.set.SetTest"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="/Users/chenpiyang/Documents/workspace-java/CollectionTest/src/com/pierre/set/alice30.txt"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="113BasicJava-V1Chapter13CollectionTest20190902"/>
+</launchConfiguration>

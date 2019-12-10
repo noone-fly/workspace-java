@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Dinamickey&apos; to &apos;GenerateDinamickey&apos;&#x0A;- Original project: &apos;20180329&apos;&#x0A;- Original element: &apos;Dinamickey&apos;&#x0A;- Renamed element: &apos;GenerateDinamickey&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Dinamickey&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Dinamickey.java[Dinamickey" matchStrategy="1" name="GenerateDinamickey" qualified="false" references="true" similarDeclarations="false" stamp="1523936108769" textual="false" version="1.0"/>
+</session>

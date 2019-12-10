@@ -1,0 +1,10 @@
+package io.pierre.frame;
+
+import javax.swing.JPanel;
+
+public class StartCloudRecordMixPanel extends JPanel {
+	public StartCloudRecordMixPanel() {
+		// TODO Auto-generated constructor stub
+		
+	}
+}

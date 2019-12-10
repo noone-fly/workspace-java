@@ -1,0 +1,17 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+import java.awt.Desktop;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URI;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+public class StartLocalRecordPanel extends JPanel {
+	public StartLocalRecordPanel() {
+		
+	}
+}

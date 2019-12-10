@@ -1,0 +1,44 @@
+package com.pierre.swinglayout;
+
+import java.awt.EventQueue;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class GridBagDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				
+			}
+		});
+	}
+}
+
+class ToolFrame extends JFrame{
+	private JButton button1;
+	private JButton button2;
+	private JButton button3;
+	private JPanel panel4;
+	private JComboBox comboBox5;
+	private JTextField testField6;
+	private JButton button7;
+	private JList list8;
+	private JTextArea textArea9;
+	
+	
+}
+
+
+
+
+
+

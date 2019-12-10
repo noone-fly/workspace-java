@@ -1,0 +1,32 @@
+package io.pierre.frame;
+
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class CreateRtmTokenPanel extends JPanel {
+	
+	private JTextField appIdField; // app ID
+	private JTextField appCerField; // app certificate
+	private JTextField uidField; // uid
+	private JTextField expireTimestampField; //
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JTextArea displayArea; // 显示token结果
+	private JButton createToken;
+
+	Map<String, String> map = null;
+	String appidFromProperties = null;
+	String CerFromProperties = null;
+	String cnameFromProperties = null;
+	String uidFromProperties = null;
+	
+}

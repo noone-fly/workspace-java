@@ -1,0 +1,27 @@
+package com.pierre.swinglayout;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GradLayout {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+class TestGradLayout extends JFrame{
+	
+	public static final int DEFAULT_WIDTH = 500;
+	public static final int DEFAULT_HEIGHT = 500;
+	
+	private JPanel cardpan,containbtn; //cardpan为卡片显示区域， containbtn为按钮显示区域
+	private JButton btn1,btn2,btn3,btn4; //此处定义诗人的按钮
+	private JPanel pan1,pan2,pan3,pan4; //此处定义的面板中显示诗句
+	private CardLayout card;    //定义卡片布局
+	private JTextArea ta1,ta2,ta3,ta4; //定义放诗句的文本域
+	
+	
+}

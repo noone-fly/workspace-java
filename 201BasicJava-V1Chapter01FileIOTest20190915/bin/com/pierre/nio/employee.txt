@@ -1,0 +1,4 @@
+3
+Carl Cracker|75000.0|1987|11|15
+Harry Hacker|50000.0|1989|9|1
+Tony Tester|45000.0|1990|2|15

@@ -1,0 +1,41 @@
+package io.pierre.frame;
+
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import io.pierre.tools.PropertyTools;
+
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class QueryUserStatusPanel extends JPanel {
+	private JButton appid;
+	private JButton cname;
+	private JButton uid;
+	
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JButton queryUserStatusToken;
+	
+	Map<String, String> map = null;
+	String appidFromProperties = null;
+	String cnameFromProperties = null;
+	String uidFromProperties = null;
+	
+	public QueryUserStatusPanel() {
+		
+map = PropertyTools.getMessage(System.getProperty("user.home") + "/property.txt");
+		
+		appidFromProperties = map.get("appidCertificate");
+		cnameFromProperties = map.get("cname");
+		uidFromProperties = map.get("uid");
+
+		
+		
+	}
+	
+}

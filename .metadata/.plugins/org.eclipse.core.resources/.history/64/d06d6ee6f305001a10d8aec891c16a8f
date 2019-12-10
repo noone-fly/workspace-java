@@ -1,0 +1,34 @@
+package com.pierre.menu;
+
+import java.awt.EventQueue;
+import java.awt.Desktop.Action;
+
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JPopupMenu;
+
+public class MenuTest {
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				
+			}
+		});
+	}
+}
+
+
+class MenuFrame extends JFrame{
+
+	public static final int DEFAULT_WIDTH = 400;
+	public static final int DEFAULT_HEIGHT = 400;
+	
+	private Action saveAction;
+	private Action saveAsAction;
+	private JCheckBoxMenuItem readonlyItem;
+	private JPopupMenu popup;
+	
+	
+}

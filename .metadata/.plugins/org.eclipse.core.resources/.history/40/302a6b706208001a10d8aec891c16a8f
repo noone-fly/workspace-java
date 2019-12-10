@@ -1,0 +1,100 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class KickoutPanel extends JPanel {
+
+	private JTextField urlField;
+	private JTextField customerIDField;
+	private JTextField customerCerField;
+	private JTextField appidField;
+	private JTextField cnameField;
+	private JTextField uidField;
+	private JTextField ipField;
+	private JTextField timeField;
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JTextArea displayArea;
+	private JButton kickoutButton;
+
+	public KickoutPanel() {
+		// TODO Auto-generated constructor stub
+
+		northPanel = new JPanel();
+		northPanel.setLayout(new GridLayout(5, 3)); // 创建5行两列的表格
+
+		urlField = new JTextField("https://api.agora.io/dev/v1/kicking-rule", 21);
+		customerIDField = new JTextField("", 21);
+		customerCerField = new JTextField("", 21);
+		appidField = new JTextField("", 21);
+		cnameField = new JTextField("", 21);
+		uidField = new JTextField("", 21);
+		ipField = new JTextField("", 21);
+		timeField = new JTextField("0", 21);
+
+		northPanel.add(new JLabel("Url: ", SwingConstants.RIGHT));
+		northPanel.add(urlField);
+		northPanel.add(new JLabel("踢人URL，勿改 ", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Customer ID: ", SwingConstants.RIGHT));
+		northPanel.add(customerIDField);
+		northPanel.add(new JLabel("客户ID必填 ", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Customer Certificate: ", SwingConstants.RIGHT));
+		northPanel.add(customerCerField);
+		northPanel.add(new JLabel("客户证书必填 ", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("App ID: ", SwingConstants.RIGHT));
+		northPanel.add(appidField);
+		northPanel.add(new JLabel("必填 ", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Channel Name: ", SwingConstants.RIGHT));
+		northPanel.add(cnameField);
+		northPanel.add(new JLabel("以频道号的维度封禁", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("Uid: ", SwingConstants.RIGHT));
+		northPanel.add(uidField);
+		northPanel.add(new JLabel("需要封禁的客户端uid", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("客户端IP: ", SwingConstants.RIGHT));
+		northPanel.add(ipField);
+		northPanel.add(new JLabel("可选项，以IP维度封禁", SwingConstants.LEFT));
+
+		northPanel.add(new JLabel("封人时间: ", SwingConstants.RIGHT));
+		northPanel.add(timeField);
+		northPanel.add(new JLabel("填0表示只踢掉，时间单位是分钟", SwingConstants.LEFT));
+
+		add(northPanel, BorderLayout.NORTH); // 添加到子面板上部
+
+		// 中部分
+		displayArea = new JTextArea(20, 60);
+		JScrollPane scrollPane = new JScrollPane(displayArea);
+		add(scrollPane, BorderLayout.CENTER);
+
+		// 下部分
+		southPanel = new JPanel();
+		kickoutButton = new JButton("封印此妖魔");
+		southPanel.add(kickoutButton);
+		kickoutButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		add(southPanel,BorderLayout.SOUTH);
+	}
+}

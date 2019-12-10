@@ -1,0 +1,123 @@
+package io.pierre.frame;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import io.pierre.tools.ValidateField;
+
+public class VarifyRtcTokenPanel extends JPanel {
+	
+	private JTextArea tokenArea;
+	private JTextField appIDField;  // app ID
+	private JTextField appCerField; // app certificate
+	private JTextField cnameField;  // channel name
+	private JTextField uidField;    // uid
+	
+	private JTextArea displayArea;
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JButton validateToken;
+	
+	public VarifyRtcTokenPanel() {
+		// TODO Auto-generated constructor stub
+		northPanel = new JPanel();
+		northPanel.setLayout(new GridLayout(5,2)); //创建5行两列的表格
+		
+		tokenArea = new JTextArea(2, 21);
+		tokenArea.setText("您的token字符串");
+		JScrollPane scrollPane1 = new JScrollPane(tokenArea);
+		add(scrollPane1);
+		
+		tokenArea.addMouseListener(new MouseListener() {
+			@Override  //鼠标按下，释放时就执行
+			public void mouseReleased(MouseEvent e) {}
+			@Override //鼠标按下时执行
+			public void mousePressed(MouseEvent e) {tokenArea.setText("");}
+			@Override  //鼠标离开组件时执行
+			public void mouseExited(MouseEvent e) {}
+			@Override  //鼠标回到组件时执行，离开组件不会执行
+			public void mouseEntered(MouseEvent e) {}
+			@Override  //鼠标按下时执行，释放时恢复显示文字
+			public void mouseClicked(MouseEvent e) {}
+		});
+		
+		appIDField = new JTextField("", 21);
+		appCerField = new JTextField("", 21);
+		cnameField = new JTextField("", 21);
+		uidField = new JTextField("", 21);
+		
+//		northPanel.add(new JLabel("Token String: ", SwingConstants.RIGHT));
+//		JScrollPane scrollPane1 = new JScrollPane(tokenArea);
+//		northPanel.add(scrollPane1);
+//		northPanel.add(new JLabel("你的token字符串", SwingConstants.LEFT));
+		
+		northPanel.add(new JLabel("App ID: ", SwingConstants.RIGHT));
+		northPanel.add(appIDField);
+		northPanel.add(new JLabel("你的app ID", SwingConstants.LEFT));
+		
+		northPanel.add(new JLabel("App Certificate: ", SwingConstants.RIGHT));
+		northPanel.add(appCerField);
+		northPanel.add(new JLabel("你的token certificate", SwingConstants.LEFT));
+		
+		northPanel.add(new JLabel("Channel Name: ", SwingConstants.RIGHT));
+		northPanel.add(cnameField);
+		northPanel.add(new JLabel("你的频道号", SwingConstants.LEFT));
+		
+		northPanel.add(new JLabel("Uid: ", SwingConstants.RIGHT));
+		northPanel.add(uidField);
+		northPanel.add(new JLabel("你的uid", SwingConstants.LEFT));
+		
+		add(northPanel, BorderLayout.NORTH); //添加到子面板上部
+		
+		//中部分
+		
+		displayArea = new JTextArea(20,60);
+		displayArea.setLineWrap(true);
+		displayArea.setWrapStyleWord(true);
+		JScrollPane scrollPane = new JScrollPane(displayArea);
+		add(scrollPane, BorderLayout.CENTER);
+				
+		//下部分
+		southPanel = new JPanel();
+		validateToken = new JButton("验证Token");
+		southPanel.add(validateToken);
+		
+		validateToken.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String token = tokenArea.getText().trim();
+				String appid = appIDField.getText().trim();
+				String appCer = appCerField.getText().trim();
+				String cname = cnameField.getText().trim();
+				String uid = uidField.getText().trim();
+				
+				// validate appid
+				String validateAppID = ValidateField.validateAppid(appid.trim());
+				String validateAppCer = ValidateField.validateAppid(appCer.trim());
+				String validateCname = ValidateField.validateAppid(cname.trim());
+				String validateUid = ValidateField.validateUid(uid.trim());
+				
+				if (null == token || token.equals("")) {
+					displayArea.setText("");
+					displayArea.append("Token 不能为空");
+				}
+		
+			}
+		});
+	
+		add(validateToken, BorderLayout.SOUTH);
+	}
+}

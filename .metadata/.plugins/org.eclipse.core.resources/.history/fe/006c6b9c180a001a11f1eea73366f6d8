@@ -1,0 +1,16 @@
+package io.pierre.rtm;
+
+import io.pierre.rtm.AccessToken;
+import io.pierre.rtm.RtmTokenBuilder;
+
+public class RtmTokenBuilderSample {
+    
+    public static String generateRtmToken(String appId, String appCertificate, String uid,
+			int expireTimestamp) throws Exception {
+    		RtmTokenBuilder token = new RtmTokenBuilder(appId, appCertificate, userId);
+        token.setPrivilege(AccessToken.Privileges.kRtmLogin, expireTimestamp);
+
+        String result = token.buildToken();
+        return result;
+    }
+}

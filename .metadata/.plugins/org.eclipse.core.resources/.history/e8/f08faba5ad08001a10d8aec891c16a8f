@@ -1,0 +1,41 @@
+package io.pierre.tools;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class ValidateField {
+	
+	public static String validateAppid(String appId) {
+		String string = "invalid";
+		String patternString = "[a-z0-9]{32}"; // 32位字符串，只包含小写字母和数字
+		Pattern pattern = Pattern.compile(patternString);
+        Matcher matcher = pattern.matcher(appId);
+        if (matcher.matches()) {
+			string = "correct";
+		}else {
+			string = "invalid";
+		}
+        
+        return string;
+	}
+	
+	public static String validateUid(String uid) {
+		String string = "invalid";
+		String patternString = "[^0][0-9]{1,9}|0"; // 0到2的32次方减一，但是数字不能以0开头，同时要小于 4294967295
+		Pattern pattern = Pattern.compile(patternString);
+        Matcher matcher = pattern.matcher(uid);
+        if (matcher.matches()) {
+			string = "correct";
+		}else {
+			string = "invalid";
+		}
+        
+        return string;
+	}
+	
+}

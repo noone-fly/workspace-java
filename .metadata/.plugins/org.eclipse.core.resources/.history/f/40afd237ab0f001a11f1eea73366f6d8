@@ -1,0 +1,10 @@
+package io.pierre.frame;
+
+import javax.swing.JPanel;
+
+public class StartLocalRecordPanel extends JPanel {
+	public StartLocalRecordPanel() {
+		// TODO Auto-generated constructor stub
+		
+	}
+}

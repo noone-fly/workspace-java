@@ -1,0 +1,41 @@
+package io.pierre.frame;
+
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class KickoutPanel extends JPanel {
+	
+	private JTextField urlField;
+	private JTextField customerIDField;
+	private JTextField customerCerField;
+	private JTextField appidField;
+	private JTextField cnameField;
+	private JTextField uidField;
+	private JTextField ipField;
+	private JTextField timeField;
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JTextArea displayArea;
+	private JButton createToken;
+	
+	public KickoutPanel() {
+		// TODO Auto-generated constructor stub
+		
+		northPanel = new JPanel();
+		northPanel.setLayout(new GridLayout(5,3)); //创建5行两列的表格
+		
+		urlField = new JTextField("https://api.agora.io/dev/v1/kicking-rule", 21);
+		customerIDField = new JTextField("", 21);
+		customerCerField = new JTextField("", 21);
+		appidField = new JTextField("", 21);
+		cnameField = new JTextField("",21);
+		uidField = new JTextField("", 21);
+		ipField = new JTextField("", 21);
+		timeField = new JTextField("", 21);
+		
+	}
+}

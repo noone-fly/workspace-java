@@ -1,0 +1,9 @@
+package com.pierre.frame;
+
+public class BuildCardLayout {
+	public BuildCardLayout() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+}

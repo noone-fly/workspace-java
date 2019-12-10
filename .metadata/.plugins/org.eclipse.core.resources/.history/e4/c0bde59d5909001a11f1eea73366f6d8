@@ -1,0 +1,9 @@
+package io.pierre.rtcrestfulapi;
+
+public class KickoutClient {
+	
+	public static void kickoutSomebody() {
+		
+	}
+	
+}

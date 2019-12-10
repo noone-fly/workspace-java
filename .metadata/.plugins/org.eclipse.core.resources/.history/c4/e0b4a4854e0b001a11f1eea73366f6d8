@@ -1,0 +1,21 @@
+package io.pierre.frame;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+/**
+ * 
+ * @author chenpiyang
+ *
+ */
+public class QueryUserStatusPanel extends JPanel {
+	private JButton appid;
+	private JButton cname;
+	private JButton uid;
+	
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JButton validateToken;
+	
+	
+}

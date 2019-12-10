@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.pierre.socket.ThreadedEchoHandle&apos; to &apos;ThreadedEchoServer&apos;&#x0A;- Original project: &apos;JavaNetwork20190922&apos;&#x0A;- Original element: &apos;com.pierre.socket.ThreadedEchoHandle&apos;&#x0A;- Renamed element: &apos;com.pierre.socket.ThreadedEchoServer&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ThreadedEchoHandle&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.pierre.socket{ThreadedEchoHandle.java[ThreadedEchoHandle" matchStrategy="1" name="ThreadedEchoServer" qualified="false" references="true" similarDeclarations="false" stamp="1569146849730" textual="false" version="1.0"/>
+</session>

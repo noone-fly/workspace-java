@@ -1,0 +1,32 @@
+package io.pierre.tools;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
+public class PropertyTools {
+	
+	public static Map<String, String> getMessage(String file){
+		Map<String, String> map = new HashMap<String, String>();
+		Properties properties = new Properties();
+		try {
+			properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(file));
+			map.put("appidNoCertificate", properties.getProperty("appidNoCertificate"));
+			map.put("appidCertificate", properties.getProperty("appCertificate"));
+			map.put("appCertificate", properties.getProperty("appidCertificate"));
+			map.put("customerID", properties.getProperty("customerID"));
+			map.put("customerCertificate", properties.getProperty("customerCertificate"));
+			map.put("vendorID", properties.getProperty("vendorID"));
+			map.put("cname", properties.getProperty("cname"));
+			map.put("uid", properties.getProperty("uid"));
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return map;
+	}
+	
+}
